@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react"
-export default function cart() {
+export default function Cart() {
     const [count,setCount]=useState("0")
     const [sub,setSub]=useState("0")
     return (
