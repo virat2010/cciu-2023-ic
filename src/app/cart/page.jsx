@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useState } from "react"
 export default function cart() {
     const [count,setCount]=useState("0")
