@@ -1,5 +1,7 @@
+import progress from "./progress";
 import './globals.css'
 import Link from 'next/link'
+
 export default function RootLayout({ children }) {
 
   return (
@@ -10,6 +12,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
+        <progress />
         <div id="navbar" className="navbar bg-base-100 border-b border-neutral-500">
           <div className="flex-1">
             <Link href="/" className="btn btn-ghost normal-case text-xl">SeniorSafe</Link>
