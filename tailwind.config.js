@@ -1,16 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  mode: "jit",
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     typography: (theme) => ({}),
     extend: {},
     fontFamily: {
-      'quicksand': ['Quicksand', 'sans-serif']
+      quicksand: ["Quicksand", "sans-serif"],
     },
   },
-  plugins: [require("daisyui"),
-    require("@tailwindcss/typography")],
-}
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
+};

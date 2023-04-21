@@ -1,4 +1,4 @@
-self.__FONT_LOADER_MANIFEST={
-  "pages": {},
-  "app": {}
-}
+self.__FONT_LOADER_MANIFEST = {
+  pages: {},
+  app: {},
+};

@@ -6,11 +6,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api',
-        destination: 'http://localhost:8080',
+        source: "/api",
+        destination: "http://localhost:8080",
       },
-    ]
+    ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

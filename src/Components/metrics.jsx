@@ -1,5 +1,5 @@
-'use client';
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 
 export default function Metrics() {
   // Define state variables to hold the fetched data and loading status
@@ -11,7 +11,9 @@ export default function Metrics() {
     async function fetchData() {
       setLoading(true);
       try {
-        const jsonData = await fetch("http://localhost:8080").then(res=>res.json());
+        const jsonData = await fetch("http://localhost:8080").then((res) =>
+          res.json()
+        );
         setData(jsonData);
       } catch (error) {
         console.error(error);
@@ -23,7 +25,7 @@ export default function Metrics() {
 
   // Render a loading message if the data is still being fetched
   if (loading) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
   // Render the fetched data if available
@@ -36,9 +38,7 @@ export default function Metrics() {
           <p>Mode: {data[0].mode}</p>
         </div>
       )}
-      {data.length === 0 && (
-        <p>No data available</p>
-      )}
+      {data.length === 0 && <p>No data available</p>}
     </div>
   );
 }
