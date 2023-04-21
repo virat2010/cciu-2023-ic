@@ -11,10 +11,20 @@ export default function RootLayout({ children }) {
       <head />
       <body>
         <div id="navbar" className="navbar bg-base-100 border-b border-neutral-500">
-          <div className="flex-1">
-            <Link href="/" className="btn btn-ghost normal-case text-xl">SeniorSafe</Link>
+          <div className="center text-2xl">
+            <Link href="/">
+              <span className="font-quicksand font-extrabold transition-colors">
+                <span className="text-lime-500 font-extrabold">
+                  S
+                </span>
+                <span className="text-black dark:text-white">enior</span>
+                <span className="text-white bg-lime-500 pl-1.5 pr-2">
+                  SAFE
+                </span>
+              </span>
+            </Link>
           </div>
-          <div className="flex-none">
+          <div className="ml-auto">
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <div className="indicator">

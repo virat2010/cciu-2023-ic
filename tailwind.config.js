@@ -5,7 +5,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    typography: (theme) => ({}),
     extend: {},
+    fontFamily: {
+      'quicksand': ['Quicksand', 'sans-serif']
+    },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+    require("@tailwindcss/typography")],
 }
