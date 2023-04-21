@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "serve": "node ArduinoServer",
+    "serve": "node arduinoServer",
     "build": "next build",
-    "start": "next start -H 10.0.0.41 && node ArduinoServer",
+    "prepare env": "corepack enable && corepack prepare pnpm@latest",
+    "start": "next start -H 10.0.0.41 && node arduinoServer",
     "lint": "next lint"
   },
   "dependencies": {
