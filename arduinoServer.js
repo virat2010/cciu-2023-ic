@@ -19,7 +19,7 @@ const pool = mysql.createConnection({
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 parser.on('data', data => {
     console.log('got word from arduino:', data.toString("hex"));
-    pool.query(`INSERT INTO \`health_metrics_db\`.\`test\` (\`BPM\`) VALUES (${data.toString('hex').split('/')[0]})`, (err, rows, fields) => {
+    pool.query(`INSERT INTO \`health_metrics_db\`.\`data\` (\`BPM\`) VALUES (${data.toString('hex').split('/')[0]})`, (err, rows, fields) => {
         if(err){throw err};
     });
 });
@@ -30,7 +30,7 @@ server.listen(8080, () => {
     console.log("listening on *:8080");
 });
 app.get("/", (req, res) => {
-    pool.query(`SELECT BPM FROM test`, (err, rows, fields) => {
+    pool.query(`SELECT BPM FROM data`, (err, rows, fields) => {
         if(err){throw err;}
         const heartRates = rows.map(row => row.BPM);
         const mean = heartRates.reduce((total, rate) => total + rate, 0) / heartRates.length;
@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
                 modes.push(rate);
             }
         }
-        const modeV = modes.length === heartRates.length ? "No mode" : modes.join(", ");
+        const modeV = modes.length === heartRates.length ? "No mode" : modes[];//.join(", ");
         const values = [{
             "mean": mean,
             "median": median,

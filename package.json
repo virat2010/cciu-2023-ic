@@ -8,7 +8,7 @@
     "build": "next build",
     "prepare env": "corepack enable && corepack prepare pnpm@latest",
     "start": "next start -H 10.0.0.41 && node arduinoServer",
-    "lint": "next lint"
+    "lint": "next lint && eslint ."
   },
   "dependencies": {
     "@next/font": "13.1.5",
@@ -23,6 +23,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.2.0",
     "next": "13.1.5",
+    "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "serialport": "^10.5.0",

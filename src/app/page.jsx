@@ -1,11 +1,9 @@
-import { Suspense } from "react"
-import { Metrics } from "../Components/metrics"
+//import { Metrics } from "@/Components/metrics"
 
 export default function Home() {
   return (
     <div>
       <h1 className="p-4 text-6xl font-bold text-center my-4">Welcome to your portal!</h1>
-      <Suspense fallback={<p>Loading heart data...</p>}>
         <div className="p-8 center center-welcome text-center border-neutral-400 border-2 stats shadow-2xl shadow-rose-700/50">
           <div className="stat">
             <div className="stat-title text-xl">Chance of Heart Attack</div>
@@ -19,7 +17,7 @@ export default function Home() {
               <div className="animate-[spin_2s_cubic-bezier(.52,1.61,.6,-0.78)]" style={{ 'animationDirection': 'reverse' }}>5%</div>
             </div>
           </div>
-        </div></Suspense><br/><br/><Metrics></Metrics>
+        </div>{/**<br/><br/><Metrics></Metrics>*/}
     </div>
   )
 }
