@@ -30,6 +30,7 @@ server.listen(8080, () => {
     console.log("listening on *:8080");
 });
 app.get("/", (req, res) => {
+    console.log(req)
     pool.query(`SELECT BPM FROM test`, (err, rows, fields) => {
         if(err){throw err;}
         const heartRates = rows.map(row => row.BPM);
@@ -52,11 +53,11 @@ app.get("/", (req, res) => {
             }
         }
         const modeV = modes.length === heartRates.length ? "No mode" : modes.join(", ");
-        const values = [{
+        const values = {
             "mean": mean,
             "median": median,
             "mode": modeV,
-        }]
+        }
         res.status(200).json(values);
     });
 });

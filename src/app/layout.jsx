@@ -1,4 +1,3 @@
-import progress from "./progress";
 import './globals.css'
 import Link from 'next/link'
 
@@ -12,7 +11,6 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <progress />
         <div id="navbar" className="navbar bg-base-100 border-b border-neutral-500">
           <div className="center text-2xl">
             <Link href="/">

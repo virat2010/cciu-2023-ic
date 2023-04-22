@@ -1,3 +1,12 @@
 self.__RSC_CSS_MANIFEST={
-  "__entry_css_mods__": {}
+  "cssImports": {
+    "D:\\My JS Projects\\cciu-2023\\src\\app\\layout.jsx": [
+      "D:\\My JS Projects\\cciu-2023\\src\\app\\globals.css"
+    ]
+  },
+  "cssModules": {
+    "D:\\My JS Projects\\cciu-2023\\src\\app\\page": [
+      "D:\\My JS Projects\\cciu-2023\\src\\app\\globals.css"
+    ]
+  }
 }
