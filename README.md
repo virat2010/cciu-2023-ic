@@ -29,9 +29,9 @@ Arduino, Next.js, AI/ML, and IoT sensors
 
 <h2>Shopping Cart</h2>
 
-- [X] Raspberry Pi
-- [X] Monitor
-- [X] Cables
+- [x] Raspberry Pi
+- [x] Monitor
+- [x] Cables
 - [ ] Suit
-- [X] Tri-Fold
-- [X] Table Cloth
+- [x] Tri-Fold
+- [x] Table Cloth

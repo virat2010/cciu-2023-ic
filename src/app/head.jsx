@@ -6,5 +6,5 @@ export default function Head() {
       <meta name="description" content="Created by Virat Ponugoti" />
       <link rel="icon" href="/favicon.ico" />
     </>
-  )
+  );
 }
