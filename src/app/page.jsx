@@ -1,12 +1,14 @@
-//import { Metrics } from "@/Components/metrics"
-
+import Link from 'next/link';
 export default function Home() {
   return (
     <div>
       <h1 className="p-4 text-6xl font-bold text-center my-4">
         Welcome to your portal!
-      </h1>
-      <div className="p-8 center center-welcome text-center border-neutral-400 border-2 stats shadow-2xl shadow-rose-700/50">
+        <br />
+        <Link className="text-4xl link link-hover hover:text-secondary transition-all" href="/metrics">Go to Metrics</Link>
+        </h1>
+
+      <div className="p-8 center center-welcome text-center my-4 border-neutral-400 border-2 stats shadow-2xl shadow-rose-700/50">
         <div className="stat">
           <div className="stat-title text-xl">Chance of Heart Attack</div>
 
@@ -52,7 +54,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/**<br/><br/><Metrics></Metrics>*/}
-    </div>
+      </div>
   );
 }

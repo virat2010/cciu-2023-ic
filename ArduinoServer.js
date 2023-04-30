@@ -22,7 +22,7 @@ const parser = port.pipe(new ReadlineParser({ delimiter: "\n" }));
 parser.on("data", (data) => {
   console.log("got word from arduino:", data.toString("hex"));
   pool.query(
-    `INSERT INTO \`health_metrics_db\`.\`data\` (\`BPM\`) VALUES (${
+    `INSERT INTO \`health_metrics_db\`.\`test\` (\`BPM\`) VALUES (${
       data.toString("hex").split("/")[0]
     })`,
     (err, rows, fields) => {
@@ -39,34 +39,26 @@ server.listen(8080, () => {
   console.log("listening on *:8080");
 });
 app.get("/", (req, res) => {
-    console.log(req)
-    pool.query(`SELECT BPM FROM test`, (err, rows, fields) => {
-        if(err){throw err;}
-        const heartRates = rows.map(row => row.BPM);
-        const mean = heartRates.reduce((total, rate) => total + rate, 0) / heartRates.length;
-        const sortedRates = heartRates.sort();
-        const middleIndex = Math.floor(sortedRates.length / 2);
-        const median = sortedRates.length % 2 === 0 ? (sortedRates[middleIndex] + sortedRates[middleIndex - 1]) / 2 : sortedRates[middleIndex];
-        const mode = heartRates.reduce((prev, curr) => {
-            prev[curr] = (prev[curr] || 0) + 1;
-            return prev;
-        }, {});
-        let modes = [];
-        let maxCount = 0;
-        for (const rate in mode) {
-            if (mode[rate] > maxCount) {
-                modes = [rate];
-                maxCount = mode[rate];
-            } else if (mode[rate] === maxCount) {
-                modes.push(rate);
-            }
-        }
-        const modeV = modes.length === heartRates.length ? "No mode" : modes.join(", ");
-        const values = {
-            "mean": mean,
-            "median": median,
-            "mode": modeV,
-        }
-        res.status(200).json(values);
-    });
+  pool.query(`SELECT BPM,TIME FROM test`, (err, rows, fields) => {
+    if (err) {
+      throw err;
+    }
+    const values = {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Patient',
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          data: rows.map(row => {
+            return {
+              x: row.TIME,
+              y: row.BPM
+            };
+          })
+        }]
+      }
+    };
+    res.status(200).json(values);
+  });
 });
