@@ -9,14 +9,14 @@
 
 <h2 id="To-Do">To-Do</h2>
 
-- [ ] Logo
+- [x] Logo
 - [ ] Official Costume
-- [ ] Product Name
-- [ ] Branding
+- [x] Product Name
+- [x] Branding
 - [ ] Tri-Fold with Explanation
-- [ ] Project JS Starter
-- [ ] Device Programming
-- [ ] README
+- [x] Project JS Starter
+- [x] Device Programming
+- [x] README
 - [ ] Docs
 
 <h2 id="Branding">Branding</h2>
