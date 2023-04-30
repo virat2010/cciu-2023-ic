@@ -1,14 +1,16 @@
-export default async function Metrics() {
+import Chart from "@/Components/Chart"
+
+export default async function Metrics({ dat }) {
     const data = await getData();
     return (
         <div className="m-6">
-        {data}
+        <Chart data={data} />
+        <Chart data={dat} />
         </div>
     );
 }
 async function getData() {
     const res = await fetch('http://localhost:8080/', {
-        next: { revalidate: 10 },
         method: 'GET',
         mode: "cors",
         headers: { 'Content-Type': 'application/json' }
@@ -19,4 +21,20 @@ async function getData() {
     const data = await res.json();
     console.log(data);
     return data;
+}
+
+export async function getStaticProps() {
+    const res = await fetch('http://localhost:8080/', {
+        method: 'GET',
+        mode: "cors",
+        headers: { 'Content-Type': 'application/json' }
+    });
+  const dat = await res.json()
+
+  return {
+    props: {
+      dat,
+    },
+    revalidate: 10,
+  }
 }

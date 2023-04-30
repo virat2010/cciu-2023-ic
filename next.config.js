@@ -1,15 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  headers: () => [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'no-store',
+        },
+      ],
+    },
+  ],
   experimental: {
     appDir: true,
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/api",
-        destination: "http://localhost:8080",
-      },
-    ];
   },
 };
 

@@ -22,9 +22,9 @@ const parser = port.pipe(new ReadlineParser({ delimiter: "\n" }));
 parser.on("data", (data) => {
   console.log("got word from arduino:", data.toString("hex"));
   pool.query(
-    `INSERT INTO \`health_metrics_db\`.\`test\` (\`BPM\`) VALUES (${
+    `INSERT INTO \`health_metrics_db\`.\`test\` (\`BPM\`, \`TIME\`) VALUES (${
       data.toString("hex").split("/")[0]
-    })`,
+    }, CURRENT_TIMESTAMP())`,
     (err, rows, fields) => {
       if (err) {
         throw err;
@@ -47,17 +47,30 @@ app.get("/", (req, res) => {
       type: 'line',
       data: {
         datasets: [{
-          label: 'Patient',
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
           data: rows.map(row => {
+            const timestamp = new Date(row.TIME);
+            const formattedTimestamp = `${timestamp.getUTCFullYear()}-${(timestamp.getUTCMonth() + 1).toString().padStart(2, "0")}-${timestamp.getUTCDate().toString().padStart(2, "0")} ${timestamp.getUTCHours().toString().padStart(2, "0")}:${timestamp.getUTCMinutes().toString().padStart(2, "0")}:${timestamp.getUTCSeconds().toString().padStart(2, "0")}`;
             return {
-              x: row.TIME,
+              x: formattedTimestamp,
               y: row.BPM
             };
           })
         }]
+      },
+      options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Line Chart'
       }
+    }
+  },
     };
     res.status(200).json(values);
   });
