@@ -6,6 +6,7 @@ specifiers:
   autoprefixer: ^10.4.13
   chart.js: ^4.3.0
   chartjs-plugin-streaming: ^2.0.0
+  cors: ^2.8.5
   daisyui: ^2.49.0
   express: '4'
   mysql: ^2.18.1
@@ -24,6 +25,7 @@ dependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.2
   chart.js: 4.3.0
   chartjs-plugin-streaming: 2.0.0_chart.js@4.3.0
+  cors: 2.8.5
   daisyui: 2.51.6_zmwpaxxolxfsc5pnrezed2bx24
   express: 4.18.2
   mysql: 2.18.1
@@ -502,6 +504,14 @@ packages:
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
+    dev: false
+
+  /cors/2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
+    engines: {node: '>= 0.10'}
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
     dev: false
 
   /css-selector-tokenizer/0.8.0:

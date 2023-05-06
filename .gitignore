@@ -3,3 +3,6 @@ node_modules
 .vscode
 .pnpm-debug.log
 pnpm-lock.yaml
+yarn-error.log
+bun.loackb
+build

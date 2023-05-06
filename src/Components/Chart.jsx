@@ -40,7 +40,7 @@ export default function Chart({ dat }) {
     labels: dat.time,
     datasets: [
       {
-        label: 'dataset 1',
+        label: 'Dataset 1',
         data: dat.bpm,
         cubicInterpolationMode: 'monotone',
         tension: 0.4,

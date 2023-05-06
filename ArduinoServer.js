@@ -1,4 +1,5 @@
 const express=require("express")
+const cors=require("cors")
 const app=express()
 const http=require("http")
 const server=http.createServer(app)
@@ -12,11 +13,12 @@ const pool=mysql.createConnection({
   password: "admin",
   database: "health_metrics_db",
 })
+app.use(cors())
 const parser=port.pipe(new ReadlineParser({ delimiter: "\n" }))
 let count = 0;
 parser.on("data", (data) => {
   count++;
-  if (count % 16 === 0) {
+  if (count % 32 === 0) {
     pool.query(`INSERT INTO \`health_metrics_db\`.\`test\` (\`BPM\`, \`TIME\`) VALUES (${data.toString("hex").split("/")[0]}, CURRENT_TIMESTAMP())`,
       (err, rows, fields) => {
         console.log("got word from arduino:", data.toString("hex"));
