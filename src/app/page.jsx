@@ -1,16 +1,18 @@
 import Link from 'next/link';
-export default function Home() {
+export default async function Home() {
+  const data = await getData();
+  console.log(data);
   return (
-    <div>
+    <div className="text-white">
       <h1 className="p-4 text-6xl font-bold text-center my-4">
-        Welcome to your portal!
+        Health Portal
         <br />
-        <Link className="text-4xl link link-hover hover:text-secondary transition-all" href="/metrics">Go to Metrics</Link>
+        <Link className="text-4xl link hover:text-6xl ease-out duration-300 hover:text-rose-500 transition-all text-sky-500" href="/metrics">Go to Metrics</Link>
         </h1>
 
       <div className="p-8 center center-welcome text-center my-4 border-neutral-400 border-2 stats shadow-2xl shadow-rose-700/50">
         <div className="stat">
-          <div className="stat-title text-xl">Chance of Heart Attack</div>
+          <div className="stat-title text-xl text-white">Chance of Heart Attack</div>
 
           <div className="stat-value text-primary">
             <svg
@@ -40,20 +42,40 @@ export default function Home() {
               ></path>
             </svg>
           </div>
-          <div className="stat-desc">7% less than last month</div>
+          <div className="stat-desc text-white text-lg">This is your risk of heart attack in the near future.
+            </div>
           <div
-            className="radial-progress bg-base-200 border-primary text-lime-500 dark:text-primary-content font-extrabold text-4xl stat-figure animate-[spin_2s_cubic-bezier(.76,.01,.44,.95)]"
+            className="radial-progress bg-base-200 border-primary text-sky-500 font-extrabold text-4xl stat-figure animate-[spin_2s_cubic-bezier(.76,.01,.44,.95)]"
             style={{ "--value": 5, "--thickness": "8px", "--size": "12rem" }}
           >
             <div
-              className="animate-[spin_2s_cubic-bezier(.52,1.61,.6,-0.78)]"
+              className="animate-[spin_2s_cubic-bezier(.52,1.61,.6,-0.78)] text-sky-500"
               style={{ animationDirection: "reverse" }}
             >
-              5%
+              {(data.risk*0.5).toFixed(1)}%
             </div>
           </div>
         </div>
       </div>
+      <div className="p-8 center center-welcome ml-[900px] my-4 border-neutral-400 border-2 stats text-xl shadow-2xl shadow-rose-700/50 text-left">
+      <ul>
+          <li className="text-success">Low risk: less than 5%</li>
+      <li className="text-warning">Intermediate risk: 5% to less than 7.5%</li>
+          <li className="text-error">High risk: 7.5% or higher</li>
+      </ul>
+      </div>
       </div>
   );
+}
+async function getData() {
+  const res = await fetch('http://localhost:8080/risk', {
+    method: 'GET',
+    mode: "cors",
+    cache: 'no-store',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return await res.json();
 }

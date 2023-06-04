@@ -7,6 +7,7 @@ export default function Cart() {
   return (
     <div>
       <div className="card w-96 bg-neutral text-neutral-content mx-auto my-4">
+        <figure><img src="Nicoderm.png" alt="Shoes" /></figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">Elderly Tracking Device</h2>
           <p>Track your elderly family.</p>
@@ -22,7 +23,7 @@ export default function Cart() {
           </div>
         </div>
       </div>
-      <div className="card w-96 bg-neutral text-neutral-content mx-auto my-4">
+      <div className="card card-side w-96 bg-neutral text-neutral-content mx-auto my-4">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Subscription</h2>
           <p>Provide service to your product. Life-time purchase.</p>

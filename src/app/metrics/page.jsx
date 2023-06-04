@@ -12,6 +12,7 @@ async function getData() {
     const res = await fetch('http://localhost:8080/', {
         method: 'GET',
         mode: "cors",
+        next: { revalidate: 1 },
         cache: 'no-store',
         headers: { 'Content-Type': 'application/json' }
     });

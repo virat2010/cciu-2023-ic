@@ -53,10 +53,10 @@ export default function Chart({ dat }) {
         type: 'time',
         ticks: {
           autoSkip: true,
-          maxTicksLimit: 20
+          maxTicksLimit: 10
         }
       }],
     }
   };
-  return <div><Line options={options} data={data} ref={(reference) => this.reference = reference} redraw={true} /></div>;
+  return <div><Line options={options} data={data} redraw={true} /></div>;
 }

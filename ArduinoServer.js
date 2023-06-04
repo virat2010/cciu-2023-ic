@@ -1,6 +1,7 @@
 const express=require("express")
 const cors=require("cors")
 const app=express()
+const mathjs=require("mathjs")
 const http=require("http")
 const server=http.createServer(app)
 const {SerialPort}=require("serialport")
@@ -39,7 +40,7 @@ app.get("/", (req, res) => {
     var timeData = [];
     var bpmData = [];
     rows.forEach(row => {
-      timeData.push(row.TIME);
+      timeData.push(new Date(row.TIME).toString());
       bpmData.push(row.BPM);
     });
     const data = {
@@ -49,6 +50,22 @@ app.get("/", (req, res) => {
     console.log(data);
     res.status(200).json(data);
 })});
+app.get("/risk", (req, res) => {
+  pool.query(`SELECT BPM FROM test`, (err, rows, fields) => {
+    if (err) {
+      throw err
+    }
+    var bpmData = [];
+    rows.forEach(row => {
+      bpmData.push(row.BPM);
+    });
+    const data = {
+      risk: mathjs.std(bpmData),
+    };
+    console.log(data);
+    res.status(200).json(data);
+  })
+});
 app.post("/reset", (req, res) => {
   pool.query(`truncate table test`, (err, rows, fields) => {
     res.status(200).send('successfully executed truncate')

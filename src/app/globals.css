@@ -22,3 +22,7 @@
 .center-welcome {
   top: 10rem;
 }
+
+.text-left {
+    text-align: left !important;
+}
